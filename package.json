@@ -2,7 +2,7 @@
   "name": "@dirkluijk/observable-matchers",
   "version": "0.2.0",
   "description": "Simple RxJS matchers for Jasmine and Jest",
-  "main": "dist/public-api.js",
+  "main": "index.js",
   "typings": "dist/public-api.d.ts",
   "author": "Dirk Luijk <mail@dirkluijk.nl>",
   "license": "MIT",
@@ -13,8 +13,9 @@
     "test": "yarn test:jasmine && yarn test:jest",
     "test:jasmine": "ts-node --project test/jasmine/tsconfig.json -r tsconfig-paths/register node_modules/jasmine/bin/jasmine test/jasmine/**/*.spec.ts",
     "test:jest": "jest",
-    "build": "rm -Rf dist && tsc --project .",
-    "release": "standard-version"
+    "build": "rm -Rf dist && tsc --project . && cp README.md dist && cp package.json dist",
+    "release": "standard-version",
+    "postbump": "yarn build"
   },
   "peerDependencies": {
     "rxjs": "^6.0.0"
