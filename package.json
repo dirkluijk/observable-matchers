@@ -1,0 +1,52 @@
+{
+  "name": "@dirkluijk/observable-matchers",
+  "version": "0.0.0",
+  "description": "Simple RxJS matchers for Jasmine and Jest",
+  "main": "dist/public_api.js",
+  "author": "Dirk Luijk <mail@dirkluijk.nl>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "commit": "npx git-cz",
+    "lint": "tslint --project tsconfig.json src/**/**.ts",
+    "test:jasmine": "ts-node --project test/jasmine/tsconfig.json -r tsconfig-paths/register node_modules/jasmine/bin/jasmine test/jasmine/**/*.spec.ts",
+    "test:jest": "jest",
+    "build": "rm -Rf dist && tsc --project ."
+  },
+  "peerDependencies": {
+    "rxjs": "^6.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@dscheerens/tslint-presets": "^5.0.1",
+    "@types/jasmine": "^3.3.16",
+    "@types/jest": "^24.0.17",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "3.0.2",
+    "husky": "^3.0.2",
+    "jasmine": "^3.4.0",
+    "jest": "^24.8.0",
+    "rxjs": "^6.5.2",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
+    "tsconfig-paths": "^3.8.0",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "@types/lodash.isequal": "^4.5.5",
+    "add-matchers": "^0.6.2",
+    "lodash.isequal": "^4.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  }
+}

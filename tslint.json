@@ -1,0 +1,16 @@
+{
+  "extends": "@dscheerens/tslint-presets/tslint.recommended.json",
+  "rules": {
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-first",
+        "grouped-imports": true
+      }
+    ],
+    "no-reference": false,
+    "no-implicit-dependencies": false,
+    "no-default-export": false
+  }
+}
