@@ -1,6 +1,6 @@
 {
   "name": "@dirkluijk/observable-matchers",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Simple RxJS matchers for Jasmine and Jest",
   "main": "dist/public_api.js",
   "author": "Dirk Luijk <mail@dirkluijk.nl>",
