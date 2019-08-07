@@ -9,6 +9,7 @@
   "scripts": {
     "commit": "npx git-cz",
     "lint": "tslint --project tsconfig.json src/**/**.ts",
+    "test": "yarn test:jasmine && yarn test:jest",
     "test:jasmine": "ts-node --project test/jasmine/tsconfig.json -r tsconfig-paths/register node_modules/jasmine/bin/jasmine test/jasmine/**/*.spec.ts",
     "test:jest": "jest",
     "build": "rm -Rf dist && tsc --project .",

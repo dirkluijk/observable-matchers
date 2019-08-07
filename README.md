@@ -4,6 +4,7 @@
 
 [![NPM version](http://img.shields.io/npm/v/@dirkluijk/observable-matchers.svg?style=flat-square)](https://www.npmjs.com/package/@dirkluijk/observable-matchers)
 [![NPM downloads](http://img.shields.io/npm/dm/@dirkluijk/observable-matchers.svg?style=flat-square)](https://www.npmjs.com/package/@dirkluijk/observable-matchers)
+[![Build status](https://img.shields.io/travis/dirkluijk/observable-matchers.svg?style=flat-square)](https://travis-ci.org/dirkluijk/observable-matchers)
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 
 ## Overview
