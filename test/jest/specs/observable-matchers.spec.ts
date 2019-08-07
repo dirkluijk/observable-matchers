@@ -1,5 +1,5 @@
 import { completed, error, next } from '@dirkluijk/observable-matchers';
-import { concat, of, throwError, EMPTY, Subject } from 'rxjs';
+import { concat, of, throwError, EMPTY, NEVER } from 'rxjs';
 import { delay, startWith } from 'rxjs/operators';
 
 interface Foo {
@@ -20,7 +20,7 @@ describe('Observable Matchers', () => {
 
     it('should support simple streams', () => {
         const completed$ = of(10, 20);
-        const uncompleted$ = new Subject().pipe(startWith(10, 20));
+        const uncompleted$ = NEVER.pipe(startWith(10, 20));
 
         expect(completed$).toBeObservable([next(10), next(20), completed()]);
         expect(completed$).not.toBeEmpty();
