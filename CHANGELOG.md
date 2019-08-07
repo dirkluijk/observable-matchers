@@ -10,5 +10,3 @@ All notable changes to this project will be documented in this file. See [standa
 * **typings:** includes typings in package.json ([b75226f](https://github.com/dirkluijk/observable-matchers/commit/b75226f))
 
 ## 0.1.0 (2019-08-07)
-
-## 0.2.0 (2019-08-07)
