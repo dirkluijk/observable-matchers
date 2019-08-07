@@ -42,9 +42,41 @@ yarn add @dirkluijk/observable-matchers --dev
 
 ## API 📝
 
+### Asymmetric Matchers (recommended)
+
+```typescript
+import { of } from 'rxjs';
+import {
+    next,
+    completed,
+    emptyObservable,
+    completedObservable,
+    failedObservable,
+    observable,
+    observableWithSize
+} from '@dirkluijk/observable-matchers';
+
+const completed$ = of(10, 20, 30);
+
+expect(completed$).toEqual(observable(
+    next(10),
+    next(20),
+    next(30),
+    completed()
+));
+expect(completed$).not.toEqual(emptyObservable());
+expect(completed$).toEqual(completedObservable());
+expect(completed$).not.toEqual(failedObservable());
+expect(completed$).toEqual(observableWithSize(3));
+```
+
+### Matchers
+
 ```typescript
 import { of } from 'rxjs';
 import { next, completed } from '@dirkluijk/observable-matchers';
+
+import '@dirkluijk/observable-matchers/matchers';
 
 const completed$ = of(10, 20, 30);
 
@@ -62,13 +94,21 @@ expect(completed$).toBeOfSize(3);
 
 ## Usage 🕹
 
-### Jest
-
-Include the following at the top of your test suite:
+In order to use the asymmetric matchers (e.g. `toEqual(observable(...))`, `toEqual(completedObservable())`),
+you just need to import them as pure functions:
 
 ```js
-import '@dirkluijk/observable-matchers';
+import { completedObservable, observable } from '@dirkluijk/observable-matchers';
 ```
+
+In order to use the matchers (e.g. `toBeObservable`, `toBeCompleted`), you need
+to register the matchers and import the typings as follows:
+
+```js
+import '@dirkluijk/observable-matchers/matchers';
+```
+
+**Please note that the use of matchers may collide with matchers from other libraries.**
 
 ## Contributors ✨
 

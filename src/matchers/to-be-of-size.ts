@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { collect } from '../internals/collect';
-import { isNextEvent } from '../observable-events';
+import { observableWithSize } from '../lib/asymmetric-matchers';
 
 export type ToBeOfSize<T> = (size: number, actual?: Observable<T>) => boolean;
 
@@ -20,5 +19,5 @@ declare global {
 }
 
 export const toBeOfSize: ToBeOfSize<unknown> = <T>(size: number, actual?: Observable<T>) => {
-    return collect(actual).filter((e) => isNextEvent(e)).length === size;
+    return observableWithSize(size).asymmetricMatch(actual);
 };
