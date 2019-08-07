@@ -64,16 +64,10 @@ expect(completed$).toBeOfSize(3);
 
 ### Jest
 
-Include the following in your `package.json`:
-
-```json
-"unmockedModulePathPatterns": ["@dirkluijk/observable-matchers"]
-```
-
-And the following at the top of your test suite:
+Include the following at the top of your test suite:
 
 ```js
-import ObservableMatchers from '@dirkluijk/observable-matchers';
+import '@dirkluijk/observable-matchers';
 ```
 
 ## Contributors ✨
