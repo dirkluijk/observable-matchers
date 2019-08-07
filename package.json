@@ -11,7 +11,8 @@
     "lint": "tslint --project tsconfig.json src/**/**.ts",
     "test:jasmine": "ts-node --project test/jasmine/tsconfig.json -r tsconfig-paths/register node_modules/jasmine/bin/jasmine test/jasmine/**/*.spec.ts",
     "test:jest": "jest",
-    "build": "rm -Rf dist && tsc --project ."
+    "build": "rm -Rf dist && tsc --project .",
+    "release": "standard-version"
   },
   "peerDependencies": {
     "rxjs": "^6.0.0"
@@ -28,6 +29,7 @@
     "jasmine": "^3.4.0",
     "jest": "^24.8.0",
     "rxjs": "^6.5.2",
+    "standard-version": "^7.0.0",
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
     "tsconfig-paths": "^3.8.0",
