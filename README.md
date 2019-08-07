@@ -26,7 +26,7 @@ The matchers provided in this package only support synchronous streams.
 
 **Testing asynchronous Observables is not (yet) supported!**
 
-## 🌩 Installation
+## Installation 🌩
 
 ##### npm
 
@@ -40,7 +40,7 @@ npm install @dirkluijk/observable-matchers --save-dev
 yarn add @dirkluijk/observable-matchers --dev
 ```
 
-## 📝 API
+## API 📝
 
 ```typescript
 import { of } from 'rxjs';
@@ -60,7 +60,7 @@ expect(completed$).not.toBeFailed();
 expect(completed$).toBeOfSize(3);
 ```
 
-## 🕹 Usage
+## Usage 🕹
 
 ### Jest
 
