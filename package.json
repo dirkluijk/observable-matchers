@@ -15,7 +15,7 @@
     "test:jest": "jest",
     "build": "rm -Rf dist && tsc --project . && cp README.md dist && cp package.json dist",
     "release": "standard-version",
-    "postbump": "yarn build"
+    "postcommit": "yarn build"
   },
   "peerDependencies": {
     "rxjs": "^6.0.0"
