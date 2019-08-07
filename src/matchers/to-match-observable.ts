@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
 
-import { collect } from '../internals/collect';
-import { equals } from '../internals/equals';
-import { ObservableEvent } from '../observable-events';
+import { collect } from '../lib/internals/collect';
+import { equals } from '../lib/internals/equals';
+import { ObservableEvent } from '../lib/observable-events';
 
 export type ToMatchObservable<T> = (
     expected: ObservableEvent<Partial<T> | jasmine.Any>[],
@@ -16,12 +16,11 @@ declare global {
         }
     }
 
-    // not supported yet
-    // namespace jest {
-    //     interface Matchers<R> {
-    //         toMatchObservable: R extends Observable<infer U> ? ToMatchObservable<U> : never;
-    //     }
-    // }
+    namespace jest {
+        interface Matchers<R> {
+            toMatchObservable: R extends Observable<infer U> ? ToMatchObservable<U> : never;
+        }
+    }
 }
 
 export const toMatchObservable: ToMatchObservable<unknown> = <T>(expected: ObservableEvent<Partial<T>>[], actual?: Observable<T>) => {

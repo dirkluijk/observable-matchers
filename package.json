@@ -40,9 +40,7 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@types/lodash.isequal": "^4.5.5",
-    "add-matchers": "^0.6.2",
-    "lodash.isequal": "^4.5.0"
+    "add-matchers": "^0.6.2"
   },
   "config": {
     "commitizen": {

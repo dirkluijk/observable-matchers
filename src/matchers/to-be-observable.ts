@@ -1,8 +1,7 @@
 import { Observable } from 'rxjs';
 
-import { collect } from '../internals/collect';
-import { equals } from '../internals/equals';
-import { ObservableEvent } from '../observable-events';
+import { observable } from '../lib/asymmetric-matchers';
+import { ObservableEvent } from '../lib/observable-events';
 
 export type ToBeObservable<T> = (
     expected: ObservableEvent<T | jasmine.Any>[],
@@ -24,5 +23,5 @@ declare global {
 }
 
 export const toBeObservable: ToBeObservable<unknown> = <T> (expected: ObservableEvent<T | jasmine.Any>[], actual?: Observable<T>) => {
-    return equals(collect(actual), expected);
+    return observable(...expected).asymmetricMatch(actual);
 };

@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { collect } from '../internals/collect';
-import { isCompletedEvent } from '../observable-events';
+import { completedObservable } from '../lib/asymmetric-matchers';
 
 export type ToBeCompleted<T> = (actual?: Observable<T>) => boolean;
 
@@ -20,5 +19,5 @@ declare global {
 }
 
 export const toBeCompleted: ToBeCompleted<unknown> = <T> (actual?: Observable<T>) => {
-    return collect(actual).some((e) => isCompletedEvent(e));
+    return completedObservable().asymmetricMatch(actual);
 };

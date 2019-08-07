@@ -26,12 +26,16 @@
     ],
     "paths": {
       "@dirkluijk/observable-matchers": [
-        "./src/public-api.ts"
+        "./src/index.ts"
+      ],
+      "@dirkluijk/observable-matchers/matchers": [
+        "./src/matchers/index.ts"
       ]
     },
     "esModuleInterop": true
   },
   "files": [
-    "src/public-api.ts"
+    "src/index.ts",
+    "src/matchers/index.ts"
   ]
 }

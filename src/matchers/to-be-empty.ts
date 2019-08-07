@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { collect } from '../internals/collect';
-import { isNextEvent } from '../observable-events';
+import { emptyObservable } from '../lib/asymmetric-matchers';
 
 export type ToBeEmpty<T> = (actual?: Observable<T>) => boolean;
 
@@ -20,5 +19,5 @@ declare global {
 }
 
 export const toBeEmpty: ToBeEmpty<unknown> = <T>(actual?: Observable<T>) => {
-    return collect(actual).every((e) => !isNextEvent(e));
+    return emptyObservable().asymmetricMatch(actual);
 };

@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { collect } from '../internals/collect';
-import { isErrorEvent } from '../observable-events';
+import { failedObservable } from '../lib/asymmetric-matchers';
 
 export type ToBeFailed<T> = (actual?: Observable<T>) => boolean;
 
@@ -20,5 +19,5 @@ declare global {
 }
 
 export const toBeFailed: ToBeFailed<unknown> = <T>(actual?: Observable<T>) => {
-    return collect(actual).some((e) => isErrorEvent(e));
+    return failedObservable().asymmetricMatch(actual);
 };
