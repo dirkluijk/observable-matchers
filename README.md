@@ -75,7 +75,6 @@ expect(completed$).toEqual(observableWithSize(3));
 ```typescript
 import { of } from 'rxjs';
 import { next, completed } from '@dirkluijk/observable-matchers';
-
 import '@dirkluijk/observable-matchers/matchers';
 
 const completed$ = of(10, 20, 30);
@@ -90,6 +89,24 @@ expect(completed$).not.toBeEmpty();
 expect(completed$).toBeCompleted();
 expect(completed$).not.toBeFailed();
 expect(completed$).toBeOfSize(3);
+```
+
+### Record utility
+
+Sometimes a stream does not replay its events. In order to capture its events,
+you can use the provided `record()` function. 
+
+```typescript
+import { record, emptyObservable } from '@dirkluijk/observable-matchers';
+import '@dirkluijk/observable-matchers/matchers';
+
+const recorded$ = record(someStream());
+
+triggerEvents();
+
+expect(recorded$).not.toEqual(emptyObservable());
+// or 
+expect(recorded$).not.toBeEmpty();
 ```
 
 ## Usage 🕹
