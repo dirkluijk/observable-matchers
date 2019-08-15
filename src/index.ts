@@ -19,3 +19,4 @@ declare global {
 }
 
 export * from './lib/asymmetric-matchers';
+export * from './lib/record';

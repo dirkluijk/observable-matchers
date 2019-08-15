@@ -3,11 +3,11 @@ import {
     emptyObservable,
     error, failedObservable,
     next,
-    observable, observableMatching, observableWithSize
+    observable, observableMatching, observableWithSize, record
 } from '@dirkluijk/observable-matchers';
 // tslint:disable:no-import-side-effect
 import '@dirkluijk/observable-matchers/matchers';
-import { concat, of, throwError, EMPTY, NEVER } from 'rxjs';
+import { concat, of, throwError, EMPTY, NEVER, Subject } from 'rxjs';
 import { delay, startWith } from 'rxjs/operators';
 
 interface Foo {
@@ -133,6 +133,30 @@ describe('Observable Matchers', () => {
             expect(completed$).not.toBeCompleted();
             expect(completed$).not.toBeFailed();
         });
+
+        it('should support record and playback', () => {
+            const subject = new Subject<string>();
+            const recorded$ = record(subject);
+
+            subject.next('foo');
+            subject.next('bar');
+            subject.next('baz');
+
+            expect(subject).toBeEmpty();
+
+            expect(recorded$).not.toBeEmpty();
+            expect(recorded$).not.toBeCompleted();
+
+            expect(recorded$).toBeObservable([
+                next('foo'),
+                next('bar'),
+                next('baz')
+            ]);
+
+            subject.complete();
+
+            expect(recorded$).toBeCompleted();
+        });
     });
 
     describe('Asymmetric matchers', () => {
@@ -253,6 +277,30 @@ describe('Observable Matchers', () => {
             expect(completed$).toEqual(emptyObservable());
             expect(completed$).not.toEqual(completedObservable());
             expect(completed$).not.toEqual(failedObservable());
+        });
+
+        it('should support record and playback', () => {
+            const subject = new Subject<string>();
+            const recorded$ = record(subject);
+
+            subject.next('foo');
+            subject.next('bar');
+            subject.next('baz');
+
+            expect(subject).toEqual(emptyObservable());
+
+            expect(recorded$).not.toEqual(emptyObservable());
+            expect(recorded$).not.toEqual(completedObservable());
+
+            expect(recorded$).toEqual(observable(
+                next('foo'),
+                next('bar'),
+                next('baz')
+            ));
+
+            subject.complete();
+
+            expect(recorded$).toEqual(completedObservable());
         });
     });
 });
