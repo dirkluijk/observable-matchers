@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "commit": "npx git-cz",
+    "commit": "git-cz",
     "lint": "tslint --project tsconfig.json src/**/**.ts",
     "test": "yarn test:jasmine && yarn test:jest",
     "test:jasmine": "ts-node --project test/jasmine/tsconfig.json -r tsconfig-paths/register node_modules/jasmine/bin/jasmine test/jasmine/**/*.spec.ts",
@@ -51,6 +51,11 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "yarn build"
     }
   }
 }
