@@ -15,7 +15,7 @@ type Expected<T> = T | jasmine.Any | {
     [K in keyof T]: ExpectedRecursive<T[K]>;
 };
 
-export function observable<T, E extends T>(...expected: ObservableEvent<Expected<E>>[]): AsymmetricObservableMatcher<T> {
+export function observable<T, E extends T = T>(...expected: ObservableEvent<Expected<E>>[]): AsymmetricObservableMatcher<T> {
     return {
         asymmetricMatch(actual: Observable<T>): boolean {
             return equals(collect(actual), expected);

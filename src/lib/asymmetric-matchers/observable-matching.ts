@@ -6,7 +6,9 @@ import { equals } from '../internals/equals';
 import { format } from '../internals/format';
 import { ObservableEvent } from '../observable-events';
 
-export function observableMatching<T, E extends Partial<T>>(...expected: ObservableEvent<E>[]): AsymmetricObservableMatcher<T> {
+export function observableMatching<T, E extends Partial<T> = Partial<T>>(
+    ...expected: ObservableEvent<E>[]
+): AsymmetricObservableMatcher<T> {
     return {
         asymmetricMatch(actual: Observable<T>): boolean {
             const collected = collect(actual);

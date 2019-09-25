@@ -11,6 +11,7 @@
     ],
     "no-reference": false,
     "no-implicit-dependencies": false,
-    "no-default-export": false
+    "no-default-export": false,
+    "linebreak-style": false
   }
 }
